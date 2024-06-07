@@ -47,7 +47,7 @@ const getFamilyMembersByFamily = async (familyId) => {
 const createFamilyMember = async (familyMemberData) => {
     try {
         const familyMember = new FamilyMember(familyMemberData);
-        let savedFamilyMember = await newFamilyMember.save();
+        let savedFamilyMember = await familyMember.save();
 
         let family = await Family.findById(familyMemberData.family);
         family.members.push(savedFamilyMember._id);
