@@ -1,4 +1,5 @@
 const FamilyMember = require('../models/family-member.model');
+const Family = require('../models/family.model');
 const logger = require('./../utils/logger');
 const { ok, created, internalServerError, notFound } = require('../utils/responseHandler');
 
