@@ -25,11 +25,7 @@ const FamilySchema = new mongoose.Schema({
         type: Object,
         required: false,
         default: null
-    },
-    members: [{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'FamilyMember'
-    }]
+    }
 });
 
 module.exports = mongoose.model('Family', FamilySchema);

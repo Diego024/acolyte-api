@@ -4,7 +4,7 @@ const { ok, created, internalServerError, notFound } = require('../utils/respons
 
 const getFamilies = async () => {
     try {
-        return ok(await Family.find().populate('members'));
+        return ok(await Family.find());
     } catch (error) {
         logger.error("family.service.js getFamilies: " + error.message);
         return internalServerError('Internal Server Error: ' + error.message);
@@ -13,7 +13,7 @@ const getFamilies = async () => {
 
 const getFamilyById = async (id) => {
     try {
-        let family = await Family.findById(id).populate('members');
+        let family = await Family.findById(id);
         if (!family) return notFound('Family not found');
         return ok(family);
     }

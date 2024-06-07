@@ -36,7 +36,7 @@ const getFamilyMemberById = async (id) => {
 
 const getFamilyMembersByFamily = async (familyId) => {
     try {
-        let familyMembers = await FamilyMember.find({ familyId: familyId }).populate('family');
+        let familyMembers = await FamilyMember.find({ family: familyId });
         if (!familyMembers) return notFound('Family Members not found');
         return ok(familyMembers);
     } catch (error) {
@@ -49,10 +49,6 @@ const createFamilyMember = async (familyMemberData) => {
     try {
         const familyMember = new FamilyMember(familyMemberData);
         let savedFamilyMember = await familyMember.save();
-
-        let family = await Family.findById(familyMemberData.family);
-        family.members.push(savedFamilyMember._id);
-        await family.save();
 
         return created(savedFamilyMember);
     } catch (error) {
